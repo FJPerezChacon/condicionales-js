@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionales</title>
+
+<!--css-->
+    <style>
+
+/** tamaño de imagenes**/ 
+        img{
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+        }
+/** contenedor stiker **/
+        .stiker {
+            display:grid;
+            grid-template-columns: 3fr 3fr 3fr;
+        }
+
+        .cont {
+            display:grid;
+            grid-template-areas: 1fr 1fr;
+            justify-content: center; 
+        }
+        
+/**contenedor password**/
+        .cont-password{
+            display:grid;
+            gap: 2px;
+            height: 250px;
+            justify-content: center;
+            
+        }
+
+        .text-password{
+            text-align: center;
+        }
+
+        .password{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<!--primera seccion, borde de imagen-->
+        <h1>seccion 1</h1>
+        
+        <img src="https://random.dog/831a74df-8de4-4150-a70f-12bd984f4bb4.JPG" alt="perro" class="img-perro" id="img-perro">
+
+    <hr>
+   
+<!-- sedunda seccion, maximo de stiker -->
+    <h1>maximo de stiker</h1>
+
+    <p>puede llevar hasta 10 stiker</p>
+
+    <div class="stiker">
+        <div class="cont">
+            <img src="https://random.dog/5bb18e5e-7ba5-4e99-b0ea-bedb7a202528.JPG" alt="perro1">
+            <input type="number" id="stiker1">
+        </div>
+        <div class="cont">
+            <img src="https://random.dog/85ca20a7-e792-4166-8709-1e0710b6d68d.jpg" alt="perro2">
+            <input type="number" id="stiker2">
+        </div>
+        <div class="cont">
+            <img src="https://random.dog/07c4e089-a7da-430a-ac09-a0da419efefa.JPG" alt="perro3">
+            <input type="number" id="stiker3">
+        </div>
+    </div>
+
+    <span id="mensaje"></span>
+<!--boton con el js para verificar el numero maximo de stiker-->
+    <button id="contador" onclick="
+    var contador = document.querySelector ('#contador')
+    var stiker1 = document.querySelector('#stiker1').value
+    var stiker2 = document.querySelector('#stiker2').value
+    var stiker3 = document.querySelector('#stiker3').value
+    contador = Number(stiker1) + Number(stiker2) + Number(stiker3)
+    var mensaje = document.querySelector('#mensaje')
+    if (contador <= 10 ) {
+        mensaje.innerHTML = ( 'llevas ' + contador + ' stiker')
+    } else {
+        mensaje.innerHTML = 'lleva muchos stiker, maximo 10'
+    }
+
+    ">verificar</button>
+
+    <hr>
+
+<!--tercera seccion, passeord-->
+    <div class="cont-password">
+        <h1 class="text-password">password</h1>
+        <div class="password">
+            <select name="select1" id="select1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="0">0</option>
+            </select>
+            <select name="select2" id="select2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="0">0</option>
+            </select>
+            <select name="select3" id="select3">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="0">0</option>
+            </select>
+        </div>
+<!-- boton con el codigo de js para verificar el password-->
+        <button id="verificador" onclick="
+        var verificador = document.querySelector ('#verificador')
+        var select1 = document.querySelector('#select1').value
+        var select2 = document.querySelector('#select2').value
+        var select3 = document.querySelector('#select3').value
+        var mensaje = document.querySelector('#mensaje2')
+        verificador = select1 + select2 + select3
+        if (verificador == 911){
+            mensaje.innerHTML = 'Password correcto, ingrese segundo Password'
+        } else if (verificador == 911){
+            mensaje.innerHTML = 'Password incorrecto'
+        } else if (verificador == 714){
+            mensaje.innerHTML = 'Password 2 correcto'
+        } else {
+            mensaje.innerHTML = 'Password incorrecto'
+        }
+
+        ">ingresar</button>
+        <br>
+        <span id="mensaje2"></span>
+    </div>
+
+</body>
+
+<!--codigo de js para la imagen de la primera seccion, borde -->
+<script>
+    const img = document.getElementById ('img-perro')
+    let tieneBorde = false
+
+    img.addEventListener ('click', function(){
+        if (tieneBorde){
+            img.style.border = 'none';
+            tieneBorde = false;
+        } else {
+            img.style.border = '2px solid red';
+            tieneBorde = true;
+        }
+    });
+
+</script>
+</html>
